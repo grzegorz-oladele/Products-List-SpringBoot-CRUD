@@ -23,13 +23,13 @@ public class ProductController {
 
     //    get all products
     @GetMapping("/products")
-    public List<Product> getAllProducts() {
+    public ResponseEntity<List<Product>> getAllProducts() {
         return productService.getAllProduct();
     }
 
-    //    create new products
+    //    create new product
     @PostMapping("/products")
-    public Product createProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return productService.addNewProduct(product);
     }
 
@@ -41,7 +41,7 @@ public class ProductController {
 
     //    update product by id
     @PutMapping("/products/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody Product productDetails) {
+    public ResponseEntity<?> updateProduct(@PathVariable long id, @RequestBody Product productDetails) {
         return productService.updateProductById(id, productDetails);
     }
 
